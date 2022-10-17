@@ -14,6 +14,9 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getSeason(date) {
   if (date !== undefined) {
     if (date.hasOwnProperty('toString')) throw new Error('Invalid date!')
+    if (!date.getMonth) {
+      throw new Error('Invalid date!')
+    }
     const moon = date.getMonth()
     let season
     if (moon < 2) {
